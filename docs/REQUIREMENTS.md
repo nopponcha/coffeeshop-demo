@@ -25,7 +25,7 @@ Business requirements live in GitHub issues [#1–#4](https://github.com/nopponc
 | --- | --- | --- |
 | AC1 | All seven days Mon–Sun | `#3 AC1 hours section shows all seven days Monday to Sunday` |
 | AC2 | Weekdays 07:00–18:00, weekends 08:00–17:00 | `#3 AC2 weekdays 07:00–18:00 and weekends 08:00–17:00` |
-| AC3 | Address **123 Sukhumvit Rd, Bangkok** | `#3 AC3 shop address 123 Sukhumvit Rd, Bangkok is shown` |
+| AC3 | Address **123 Sukhumvit Rd, Bangkok** | `#3 AC3 shop address 123 Sukhumvit Rd, Bangkok is shown` (`.address__text`) |
 
 ## Issue #4 — Contact form
 

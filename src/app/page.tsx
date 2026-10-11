@@ -9,57 +9,82 @@ export default function Home() {
       <SiteHeader />
       <main id="top">
         <header className="hero">
+          <p className="hero__eyebrow">Bangkok · Specialty Coffee</p>
           <h1>Bean &amp; Brew</h1>
-          <p>
-            Welcome to our cozy corner of Bangkok. We roast small batches, bake
-            fresh pastries daily, and pour every cup with care. Scroll down for
-            our menu, hours, and a way to say hello.
+          <p className="hero__lead">
+            Welcome to our cozy corner of Sukhumvit. We roast small batches, bake
+            fresh pastries daily, and pour every cup with care.
           </p>
         </header>
 
-        <section id="menu" aria-labelledby="menu-heading">
+        <section id="menu" className="section" aria-labelledby="menu-heading">
           <h2 id="menu-heading">Menu</h2>
-          {menuCategories.map((category) => (
-            <div className="menu-category" key={category.id}>
-              <h3>{category.title}</h3>
-              <ul className="menu-list">
-                {category.items.map((item) => (
-                  <li className="menu-item" key={item.name}>
-                    <span className="menu-item__name">{item.name}</span>
-                    <span className="menu-item__price">
-                      {formatPrice(item.priceBaht)}
-                    </span>
-                    <p className="menu-item__desc">{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <p className="section__intro">
+            Thoughtful drinks and bites — prices in Thai baht.
+          </p>
+          <div className="menu-grid">
+            {menuCategories.map((category) => (
+              <article className="menu-category card" key={category.id}>
+                <h3>{category.title}</h3>
+                <ul className="menu-list">
+                  {category.items.map((item) => (
+                    <li className="menu-item" key={item.name}>
+                      <div className="menu-item__header">
+                        <span className="menu-item__name">{item.name}</span>
+                        <span className="menu-item__price">
+                          {formatPrice(item.priceBaht)}
+                        </span>
+                      </div>
+                      <p className="menu-item__desc">{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </section>
 
-        <section id="hours" aria-labelledby="hours-heading">
+        <section id="hours" className="section" aria-labelledby="hours-heading">
           <h2 id="hours-heading">Hours</h2>
-          <table className="hours-table">
-            <thead>
-              <tr>
-                <th scope="col">Day</th>
-                <th scope="col">Hours</th>
-              </tr>
-            </thead>
-            <tbody>
-              {weeklyHours.map((row) => (
-                <tr key={row.day}>
-                  <td>{row.day}</td>
-                  <td>{formatHoursRange(row.open, row.close)}</td>
+          <div className="hours-card card">
+            <table className="hours-table">
+              <caption className="visually-hidden">
+                Opening hours for Bean and Brew
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Hours</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <address className="address">{SHOP_ADDRESS}</address>
+              </thead>
+              <tbody>
+                {weeklyHours.map((row) => (
+                  <tr
+                    key={row.day}
+                    className={
+                      row.day === "Saturday" || row.day === "Sunday"
+                        ? "hours-table__weekend"
+                        : undefined
+                    }
+                  >
+                    <th scope="row">{row.day}</th>
+                    <td>{formatHoursRange(row.open, row.close)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <address className="address">
+              <span className="address__label">Visit us</span>
+              <span className="address__text">{SHOP_ADDRESS}</span>
+            </address>
+          </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-heading">
+        <section id="contact" className="section" aria-labelledby="contact-heading">
           <h2 id="contact-heading">Contact</h2>
+          <p className="section__intro">
+            Questions or table requests? Send a note — we reply within a day.
+          </p>
           <ContactForm />
         </section>
       </main>
