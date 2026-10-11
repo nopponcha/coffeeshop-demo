@@ -12,7 +12,7 @@
 | Hosting | GitHub Pages | Zero cost, matches course/demo constraints |
 | CI | GitHub Actions | Lint, typecheck, build, E2E on every PR |
 | QA | Playwright | Reliable AC-titled tests, HTML report artifacts |
-| Styling | Plain CSS | Small surface area; no extra build tooling |
+| Styling | Plain CSS + `next/font` (Cormorant Garamond, DM Sans) | Self-hosted fonts work with static export; warm coffee-shop palette |
 
 ## Static export and `basePath`
 
@@ -40,6 +40,21 @@ docs/             Requirements traceability and this document
 5. **QA** — Playwright tests named `#issue ACn …`; HTML report uploaded as an artifact.
 
 Flow: open PR → `ci` must pass → review → squash/merge to `main` → deploy job publishes Pages → smoke verifies live URL.
+
+## Security (static site + contact form)
+
+There is no server; the contact form never sends data over the network in this demo. User input is still treated as **untrusted** because it could contain injection payloads if echoed or stored elsewhere later.
+
+| Measure | Implementation |
+| --- | --- |
+| No HTML injection APIs | No `dangerouslySetInnerHTML`, `innerHTML`, or DOM HTML built from user strings |
+| Safe rendering | Success and error copy are fixed strings; any future echo of user text must use React text children only |
+| Normalization | `sanitizeContactFields()` trims, strips control characters, and enforces max lengths before validate/submit |
+| Validation | `validateContactFields()` checks required fields and email format (`src/lib/contactValidation.ts`) |
+| Input caps | `maxLength` on Name, Email, and Message fields |
+| CSP | `<meta httpEquiv="Content-Security-Policy">` in `layout.tsx`: `default-src 'self'`, no `object-src`, external scripts blocked. `script-src` and `style-src` include `'unsafe-inline'` because Next.js static export injects small inline bootstrap scripts and CSS; no user HTML is injected. |
+
+GitHub Pages serves static files only; CSP is defense-in-depth in the browser.
 
 ## Quality gates
 

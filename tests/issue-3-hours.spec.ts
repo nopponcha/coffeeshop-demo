@@ -19,7 +19,9 @@ test.describe("Issue #3 — Opening hours", () => {
     page,
   }) => {
     for (const day of DAYS) {
-      await expect(page.getByRole("cell", { name: day, exact: true })).toBeVisible();
+      await expect(
+        page.getByRole("rowheader", { name: day, exact: true }),
+      ).toBeVisible();
     }
   });
 
@@ -39,6 +41,8 @@ test.describe("Issue #3 — Opening hours", () => {
   test("#3 AC3 shop address 123 Sukhumvit Rd, Bangkok is shown", async ({
     page,
   }) => {
-    await expect(page.locator(".address")).toHaveText("123 Sukhumvit Rd, Bangkok");
+    await expect(page.locator(".address__text")).toHaveText(
+      "123 Sukhumvit Rd, Bangkok",
+    );
   });
 });
