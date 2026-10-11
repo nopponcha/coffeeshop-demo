@@ -63,3 +63,5 @@ GitHub Pages serves static files only; CSP is defense-in-depth in the browser.
 - `npm run build` — static export to `out/`
 - `npm run test:e2e` — all requirement AC tests against served `out/`
 - `npm run test:smoke` — live URL only (deploy workflow)
+
+Post-deploy readiness uses `scripts/wait-for-live-site.sh`, which matches `Bean &amp; Brew` in the HTML (entity-encoded title), not the literal `Bean & Brew` string.
