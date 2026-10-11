@@ -97,18 +97,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Wait for live site
-        run: |
-          URL="https://nopponcha.github.io/coffeeshop-demo/"
-          for attempt in $(seq 1 36); do
-            if curl -fsSL "$URL" | grep -q "Bean & Brew"; then
-              echo "Live site is up (attempt $attempt)"
-              exit 0
-            fi
-            echo "Waiting for Pages propagation (attempt $attempt/36)..."
-            sleep 10
-          done
-          echo "Live site did not become ready in time"
-          exit 1
+        run: bash scripts/wait-for-live-site.sh "https://nopponcha.github.io/coffeeshop-demo/" 30 10
 
       - name: Playwright smoke test (live)
         env:
