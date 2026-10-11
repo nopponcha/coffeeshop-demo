@@ -1,3 +1,9 @@
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/700.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/600.css";
+
 *,
 *::before,
 *::after {
@@ -5,6 +11,8 @@
 }
 
 :root {
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
   --color-espresso: #2c1810;
   --color-espresso-soft: #3d261c;
   --color-cream: #faf6f1;
@@ -31,7 +39,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.65;
   color: var(--color-text);
   background: linear-gradient(180deg, var(--color-cream) 0%, #f5efe6 100%);
@@ -84,7 +92,7 @@ textarea:focus-visible {
 }
 
 .site-header__brand {
-  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -136,7 +144,7 @@ main {
 }
 
 .hero h1 {
-  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.25rem, 7vw, 3.25rem);
   font-weight: 700;
   line-height: 1.15;
@@ -157,7 +165,7 @@ main {
 }
 
 .section h2 {
-  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.65rem, 4vw, 2rem);
   font-weight: 700;
   margin: 0 0 0.5rem;
@@ -194,7 +202,7 @@ main {
 }
 
 .menu-category h3 {
-  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   margin: 0 0 1rem;
   font-size: 1.35rem;
   font-weight: 600;

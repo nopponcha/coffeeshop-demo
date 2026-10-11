@@ -12,7 +12,7 @@
 | Hosting | GitHub Pages | Zero cost, matches course/demo constraints |
 | CI | GitHub Actions | Lint, typecheck, build, E2E on every PR |
 | QA | Playwright | Reliable AC-titled tests, HTML report artifacts |
-| Styling | Plain CSS + `next/font` (Cormorant Garamond, DM Sans) | Self-hosted fonts work with static export; warm coffee-shop palette |
+| Styling | Plain CSS + `@fontsource/*` (Cormorant Garamond, DM Sans) | Fonts ship from npm (no Google fetch at build time); warm coffee-shop palette |
 
 ## Static export and `basePath`
 
